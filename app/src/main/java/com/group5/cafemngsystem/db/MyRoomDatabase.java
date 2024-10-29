@@ -59,4 +59,41 @@ public abstract class MyRoomDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+
+            // If you want to keep data through app restarts,
+            // comment out the following block
+            databaseWriteExecutor.execute(() -> {
+                // Populate the database in the background.
+                // If you want to start with more words, just add them.
+                UserDao userDao = INSTANCE.userDao();
+                DrinkDao drinkDao = INSTANCE.drinkDao();
+
+                User user1 = new User("tuanvm", "123456", "TuanVM", Role.ADMIN);
+                User user2 = new User("thaottp", "123456", "ThaoTT", Role.ADMIN);
+
+                userDao.insert(user1);
+                userDao.insert(user2);
+
+                Drink[] drinks = new Drink[10];
+
+                drinks[0] = new Drink("Signature Espresso", R.mipmap.drink1, 3.00, Category.SIGNATURED);
+                drinks[1] = new Drink("Iced Caramel Macchiato", R.mipmap.drink2, 4.50, Category.ICED_COFFEE);
+                drinks[2] = new Drink("Vanilla Latte", R.mipmap.drink3, 4.00, Category.SIGNATURED);
+                drinks[3] = new Drink("Iced Mocha", R.mipmap.drink4, 4.75, Category.ICED_COFFEE);
+                drinks[4] = new Drink("Cappuccino", R.mipmap.drink5, 3.50, Category.SIGNATURED);
+                drinks[5] = new Drink("Iced Matcha Latte", R.mipmap.drink7, 5.00, Category.ICED_COFFEE);
+                drinks[6] = new Drink("Americano", R.mipmap.drink8, 2.50, Category.SIGNATURED);
+                drinks[7] = new Drink("Iced Black Coffee", R.mipmap.drink9, 3.25, Category.ICED_COFFEE);
+                drinks[8] = new Drink("Mocha Frappuccino", R.mipmap.drink6, 5.50, Category.ICED_COFFEE);
+                drinks[9] = new Drink("Flat White", R.mipmap.drink1, 3.75, Category.SIGNATURED);
+
+                drinkDao.insert(drinks);
+            });
+        }
+    };
+
 }
