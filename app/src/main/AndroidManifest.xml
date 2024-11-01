@@ -12,6 +12,63 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CafeMngSystem"
         tools:targetApi="31">
+        <activity
+            android:name=".customer.ProfileActivity"
+            android:parentActivityName=".customer.CustomerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.EditOrderStatusActivity"
+            android:parentActivityName=".admin.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.CreateDrinkActivity"
+            android:parentActivityName=".admin.AdminListDrinkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminListOrderActivity"
+            android:exported="false"
+            android:parentActivityName=".admin.AdminActivity" />
+        <activity
+            android:name=".admin.AdminListDrinkActivity"
+            android:exported="false"
+            android:parentActivityName=".admin.AdminActivity" />
+        <activity
+            android:name=".admin.AdminListUserActivity"
+            android:exported="false"
+            android:parentActivityName=".admin.AdminActivity" />
+        <activity
+            android:name=".admin.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer.OrderDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".customer.OrderHistoryActivity" />
+        <activity
+            android:name=".customer.OrderHistoryActivity"
+            android:exported="false"
+            android:parentActivityName=".customer.CustomerActivity" />
+        <activity
+            android:name=".customer.CheckoutActivity"
+            android:exported="false"
+            android:parentActivityName=".customer.CartActivity" />
+        <activity
+            android:name=".customer.CartActivity"
+            android:exported="false"
+            android:parentActivityName=".customer.CustomerActivity" />
+        <activity
+            android:name=".customer.DrinkDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".customer.CustomerActivity" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer.CustomerActivity"
+            android:exported="false"
+            android:label="Menu" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
