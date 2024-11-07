@@ -41,12 +41,20 @@ public class OrderDto implements Serializable {
         UserDto userDto = new UserDto();
         userDto.setId(order.getUser());
         this.user = userDto;
+
+        this.address = order.getAddress();
+        this.phone = order.getPhone();
+        this.note = order.getNote();
+        this.orderStatus = order.getOrderStatus();
     }
 
     public OrderDto(OrderWithUserWithOrderDetail order) {
         this.id = order.order.getId();
         this.date = order.order.getDate();
         this.address = order.order.getAddress();
+        this.phone = order.order.getPhone();
+        this.note = order.order.getNote();
+        this.orderStatus = order.order.getOrderStatus();
     }
 
     public int getId() {
